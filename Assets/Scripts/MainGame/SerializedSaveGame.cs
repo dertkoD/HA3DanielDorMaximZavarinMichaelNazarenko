@@ -6,10 +6,6 @@ using UnityEngine.Serialization;
 [System.Serializable]
 public class SerializedSaveGame
 {
-    public float gameVersion;
-    // public Vector3 playerPosition;
-    // public Vector3 playerRotation;
-    //public string aString = "sdada";
     public int playerHPNew;
     public int currentWaypointIndex;
 
