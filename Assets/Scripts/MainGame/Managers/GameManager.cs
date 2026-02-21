@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
                 fireHazardScriptableObjects[Random.Range(0, fireHazardScriptableObjects.Length)];
             fireHazard.onCharacterEnteredAction += HandleCharacterEnteredFire;
         }
-      
     }
 
     public void HandleCharacterEnteredFire(FireEnteredEventArgs args)
