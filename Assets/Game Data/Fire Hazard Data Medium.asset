@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bbc48b6a3274363afa2166770403870, type: 3}
   m_Name: Fire Hazard Data Medium
   m_EditorClassIdentifier: 
-  damage: 20
+  minimumDamage: 13
+  maximumDamage: 27
