@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "UnityAdvanced",
     "maps": [
         {
@@ -9,7 +10,7 @@
                     "name": "Move",
                     "type": "Button",
                     "id": "b008f1ef-310d-422e-94dc-c97cf34d22ef",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
