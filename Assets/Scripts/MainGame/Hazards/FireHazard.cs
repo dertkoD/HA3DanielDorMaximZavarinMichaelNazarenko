@@ -14,19 +14,11 @@ public class FireHazard : MonoBehaviour
     [SerializeField]
     private UnityEvent<FireEnteredEventArgs> onCharacterEntered = new UnityEvent<FireEnteredEventArgs>();
 
-    // public void SetScriptableData(FireHazardScriptableObject fireHazardScriptableObject)
-    // {
-    //     fireHazardData = fireHazardScriptableObject;
-    // }
-    // private void Start()
-    // { 
-    //     if(onCharacterEnteredAction != null)
-    //        onCharacterEntered.AddListener(onCharacterEnteredAction);
-    // }
-
+    private const string PlayerCharacterTag = "PlayerCharacter";
+    
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("PlayerCharacter"))
+        if (other.gameObject.CompareTag(PlayerCharacterTag))
         {
             Debug.Log("Player entered this hazard");
             FireEnteredEventArgs fireEnteredEventArgs = new FireEnteredEventArgs

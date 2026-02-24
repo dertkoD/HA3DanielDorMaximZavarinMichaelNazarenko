@@ -14,13 +14,14 @@ public class PlayerCharacterController : MonoBehaviour
     [SerializeField] private UnityEvent<int> onTakeDamageEvent;
 
     [Header("Navigation")] 
-    private NavMeshAgent navMeshAgent;
+    [SerializeField] private NavMeshAgent navMeshAgent;
 
     [SerializeField] private Transform waypoint;
     [SerializeField] private Transform[] pathWaypoints;
     
-    private Animator animator;
-
+    [SerializeField]  private Animator animator;
+    [SerializeField] private Camera cam;
+    
     public int Hp
     {
         get => hp;
@@ -41,6 +42,10 @@ public class PlayerCharacterController : MonoBehaviour
 
     private int hp;
     private int startingHp;
+    
+    
+    private const string SpeedString = "Speed";
+    private static readonly int SpeedHash = Animator.StringToHash(SpeedString);
 
     public void ToggleMoving(bool shouldMove)
     {
@@ -71,8 +76,6 @@ public class PlayerCharacterController : MonoBehaviour
     private void Start()
     {
         hp = 100;
-        animator = GetComponent<Animator>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
         startingHp = hp;
         SetMudAreaCost();
         ToggleMoving(true);
@@ -105,27 +108,16 @@ public class PlayerCharacterController : MonoBehaviour
         }
 
         if (animator)
-            animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
+            animator.SetFloat(SpeedHash, navMeshAgent.velocity.magnitude);
         
-        if (Camera.main != null)
+        if (cam)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, 100f))
             {
                 //We want to know what the mouse is hovering now
                 Debug.Log($"Hit: {hit.collider.name}");
             }
         }
-
-    }
-    
-    private void OnEnable()
-    {
-        
-    }
-
-    private void OnDisable()
-    {
-        
     }
 }
